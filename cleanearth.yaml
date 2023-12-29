@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cleanearth
+  labels:
+    team: development
+    version: '1.0'
+  annotations:
+    keterangan: Front-end React Js Clean Earth Massive Project Infinite Learning
+  namespace: default
+spec:
+  containers:
+    - name: cleanearth
+      image: haikalrfadhilahh/cleanearth:presentation
+      ports:
+        - containerPort: 80
+      env:
+        - name: VITE_API_SERVICE
+          value: "https://api.haik.my.idd"
+      resources:
+        limits:
+          memory: '32Mi'
+          cpu: '250m'
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 10
+        successThreshold: 1
+        failureThreshold: 3
+        periodSeconds: 5
+# ---
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: apicleanearth
+#   labels:
+#     team: development
+#     version: '1.0'
+#   annotations:
+#     keterangan: Back-end API Express Js Clean Earth Massive Project Infinite Learning
+#   namespace: development
+# spec:
+#   containers:
+#     - name: apicleanearth
+#       image: haikalrfadhilahh/apicleanearth:2.0
+#       ports:
+#         - containerPort: 3000
+#           name: http
+#       env:
+#         - name: DB_HOST
+#           value: ""
+#         - name: DB_NAME
+#           value: "clean_earth"
+#         - name: DB_USERNAME
+#           value: ''
+#         - name: DB_PASSWORD
+#           value: ''
+#       resources:
+#         limits:
+#           memory: '32Mi'
+#           cpu: '250m'
+#       livenessProbe:
+#         httpGet:
+#           path: /
+#           port: 3000
+#         initialDelaySeconds: 10
+#         successThreshold: 1
+#         failureThreshold: 3
+#         periodSeconds: 5
