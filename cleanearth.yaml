@@ -16,7 +16,7 @@ spec:
         - containerPort: 80
       env:
         - name: VITE_API_SERVICE
-          value: "https://api.haik.my.idd"
+          value: "https://api.haik.my.id"
       resources:
         limits:
           memory: '32Mi'
